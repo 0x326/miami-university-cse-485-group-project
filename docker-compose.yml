@@ -8,3 +8,7 @@ services:
       - 40404:40404
       - 1099:1099
       - 7070:7070
+    command: gfsh \
+      -e "start locator" \
+      -e "start server" \
+      -e "create region --name=hello --type=REPLICATE"
