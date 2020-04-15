@@ -1,0 +1,10 @@
+version: '3'
+services:
+  geode:
+    image: apachegeode/geode
+    ports:
+      - 8080:8080
+      - 10334:10334
+      - 40404:40404
+      - 1099:1099
+      - 7070:7070
