@@ -1,3 +1,3 @@
 [submodule "geode-docker"]
 	path = geode-docker
-	url = https://github.com/markito/geode-docker
+	url = https://github.com/0x326/geode-docker.git
