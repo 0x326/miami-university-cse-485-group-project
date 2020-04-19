@@ -2,14 +2,17 @@
 
 ## Usage
 
-Interactively:
+To start:
 
 ```bash
-docker run -it apachegeode/geode
+git submodule update --init --recursive
+cd geode-docker/composer/
+docker-compose up -d
 ```
 
-In the background:
+To stop:
 
 ```bash
-docker-compose up -d
+cd geode-docker/composer/
+docker-compose down
 ```
