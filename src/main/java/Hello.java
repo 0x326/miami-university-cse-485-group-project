@@ -32,7 +32,9 @@ public class Hello {
 
         // Execute Query locally. Returns results set.
         SelectResults results = (SelectResults)query.execute();
-        for (Object o : results) { System.out.println(o.toString()); }
+        for (Object result : results) {
+            System.out.println(result.toString());
+        }
 
         cache.close();
 
