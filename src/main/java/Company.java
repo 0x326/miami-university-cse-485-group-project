@@ -1,15 +1,19 @@
 import java.io.Serializable;
 
 public class Company implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private String name;
-    private String hqLocation;
+    private String stockAbr;
+    private String hqLocationState;
 
     public Company() {
-        this("", "");
+        this("", "", "");
     }
-    public Company(String name, String hqLocation) {
+    public Company(String name, String stockAbr, String hqLocationState) {
         this.name = name;
-        this.hqLocation = hqLocation;
+        this.stockAbr = stockAbr;
+        this.hqLocationState = hqLocationState;
     }
 
     public String getName() {
@@ -20,13 +24,16 @@ public class Company implements Serializable {
     }
 
     public String getHqLocation() {
-        return hqLocation;
+        return hqLocationState;
     }
     public void setHqLocation(String hqLocation) {
-        this.hqLocation = hqLocation;
+        this.hqLocationState = hqLocation;
     }
 
+    public String getStockAbr() { return stockAbr; }
+    public void setStockAbr(String stockAbr) { this.stockAbr = stockAbr; }
+
     public String toString() {
-        return name + " at " + hqLocation;
+        return name + " (" + stockAbr + ")" + " in " + hqLocationState;
     }
 }
