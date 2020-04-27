@@ -16,7 +16,7 @@ public class Hello {
         Region<Integer, Company> region = cache
             .<Integer, Company>createClientRegionFactory(ClientRegionShortcut.PROXY)
             .create("companies");
-        // JOHN create a region for Stock
+        // TODO (John): create a region for Stock
 
         // populate regions
         Map<Integer, Company> companies = createCompanyData();
@@ -64,5 +64,5 @@ public class Hello {
         return companies;
     }
 
-    // JOHN create a map returning method for populating the Stock region
+    // TODO (John): create a map returning method for populating the Stock region
 }
