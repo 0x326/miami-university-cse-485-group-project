@@ -1,7 +1,9 @@
 import java.util.Map;
 import java.util.HashMap;
 import java.util.UUID;
-import java.sql.Date;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
 import org.apache.geode.cache.Region;
 import org.apache.geode.cache.client.*;
 import org.apache.geode.cache.query.QueryService;
@@ -137,7 +139,7 @@ public class Main {
     }
 
     // get a map of company data
-    public static Map<UUID, Stock> createStockData() {
+    public static Map<UUID, Stock> createStockData() throws ParseException {
         String[] names = {
             "GOOGL",
             "AAPL",
@@ -146,21 +148,22 @@ public class Main {
             "MSFT",
             "JNJ"
         };
-        String[] dates = {
-            "4/1",
-            "4/2",
-            "4/3",
-            "4/4",
-            "4/5",
-            "4/6",
-            "4/7",
-            "4/8",
-            "4/9",
-            "4/10",
-            "4/11",
-            "4/12",
-            "4/13",
-            "4/14"
+        SimpleDateFormat dateParser = new SimpleDateFormat("yyyy-MM-dd");
+        Date[] dates = {
+            dateParser.parse("2020-04-01"),
+            dateParser.parse("2020-04-02"),
+            dateParser.parse("2020-04-03"),
+            dateParser.parse("2020-04-04"),
+            dateParser.parse("2020-04-05"),
+            dateParser.parse("2020-04-06"),
+            dateParser.parse("2020-04-07"),
+            dateParser.parse("2020-04-08"),
+            dateParser.parse("2020-04-09"),
+            dateParser.parse("2020-04-10"),
+            dateParser.parse("2020-04-11"),
+            dateParser.parse("2020-04-12"),
+            dateParser.parse("2020-04-13"),
+            dateParser.parse("2020-04-14")
         };
         Map<UUID, Stock> stocks = new HashMap<UUID, Stock>();
         for (int i = 0; i < names.length; i++) {

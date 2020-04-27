@@ -1,16 +1,18 @@
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Date;
 
 public class Stock implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String name;
-    private String lastUpdatedDate;
+    private Date lastUpdatedDate;
     private double price;
 
     public Stock() {
-        this("", "", 0);
+        this("", new Date(0L), 0);
     }
-    public Stock(String name, String lastUpdatedDate, double price) {
+    public Stock(String name, Date lastUpdatedDate, double price) {
         this.name = name;
         this.lastUpdatedDate = lastUpdatedDate;
         this.price = price;
@@ -23,10 +25,10 @@ public class Stock implements Serializable {
         this.name = name;
     }
 
-    public String getLastUpdatedDate() {
+    public Date getLastUpdatedDate() {
         return lastUpdatedDate;
     }
-    public void setLastUpdatedDate(String lastUpdatedDate) {
+    public void setLastUpdatedDate(Date lastUpdatedDate) {
         this.lastUpdatedDate = lastUpdatedDate;
     }
 
