@@ -11,9 +11,9 @@ public class Demo03 {
             .create("stockValues");
 
         // Put values into region
-        region.put("AAPL", new Stock("Apple, Inc.", 274.44));
-        region.put("GOOGL", new Stock("Google LLC", 1245.40));
-        region.put("MSFT", new Stock("Microsoft Corp.", 170.53));
+        //region.put("AAPL", new Stock("Apple, Inc.", 274.44));
+        //region.put("GOOGL", new Stock("Google LLC", 1245.40));
+        //region.put("MSFT", new Stock("Microsoft Corp.", 170.53));
 
         // Get values from region
         Stock appleStock = region.get("AAPL");

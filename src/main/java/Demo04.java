@@ -18,8 +18,8 @@ public class Demo04 {
         SelectResults<Stock> results = (SelectResults<Stock>) query.execute();
         for (Stock result : results) {
             String name = result.getName();
-            double value = result.getValue();
-            System.out.printf("%s: %.2f%n", name, value);
+            //double value = result.getValue();
+            //System.out.printf("%s: %.2f%n", name, value);
         }
 
         cache.close();
