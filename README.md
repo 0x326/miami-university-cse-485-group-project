@@ -5,14 +5,12 @@
 To start:
 
 ```bash
-git submodule update --init --recursive
-cd geode-docker/composer/
-docker-compose up -d
-```
-
-To stop:
-
-```bash
-cd geode-docker/composer/
-docker-compose down
+docker run -it --rm \
+    -v "$(pwd):/pwd" \
+    -p 10334:10334 \
+    -p 40404:40404 \
+    -p 7575:7575 \
+    -p 1099:1099 \
+    --hostname localhost \
+    apachegeode/geode
 ```
