@@ -14,10 +14,9 @@ public class Demo05 {
             .create("companyInfo");
 
         // Populate companyInfo
-        /*region.put("AAPL", new Company("Apple, Inc.", "Cupertino, CA"));
-        region.put("GOOGL", new Company("Google LLC", "Mountain View, CA"));
-        region.put("MSFT", new Company("Microsoft Corp.", "Albuquerque, NM"));
-        */
+        // region.put("AAPL", new Company("Apple, Inc.", "Cupertino, CA"));
+        // region.put("GOOGL", new Company("Google LLC", "Mountain View, CA"));
+        // region.put("MSFT", new Company("Microsoft Corp.", "Albuquerque, NM"));
 
         QueryService queryService = cache.getQueryService();
 
