@@ -51,7 +51,9 @@ public class Main {
         /*----------------------------/
          *  WRITE QUERY #1 HERE      /
          *-------------------------*/
-        String queryString1 = "SELECT s.name, s.price FROM /stocks s WHERE s.price > 1000";
+        String queryString1 = "SELECT s.name, s.price FROM /stocks s " +
+            "WHERE s.price > 1000 " +
+            "ORDER BY s.name";
         
         // Execute query
         SelectResults<Struct> results1 =
@@ -67,7 +69,8 @@ public class Main {
          *  WRITE QUERY #2 HERE      /
          *-------------------------*/
         String queryString2 = "SELECT c.name, s.price FROM /stocks s, /companies c " +
-            "WHERE s.name = c.stockAbr";
+            "WHERE s.name = c.stockAbr " +
+            "ORDER BY c.name";
 
         // Execute query
         SelectResults<Struct> results2 =
@@ -83,7 +86,8 @@ public class Main {
          *  WRITE QUERY #3 HERE      /
          *-------------------------*/
         String queryString3 = "SELECT s.name, AVG(s.price) AS avgPrice FROM /stocks s " +
-            "GROUP BY s.name";
+            "GROUP BY s.name " +
+            "ORDER BY s.name";
 
         // Execute query
         SelectResults<Struct> results3 =
