@@ -56,7 +56,7 @@ public class Main {
         String queryString1 = "SELECT s.name, s.price FROM /stocks s " +
             "WHERE s.price > 1000 " +
             "ORDER BY s.name";
-        
+
         // Execute query
         SelectResults<Struct> results1 =
             (SelectResults<Struct>) queryService.newQuery(queryString1).execute();
