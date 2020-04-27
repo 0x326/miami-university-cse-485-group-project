@@ -37,10 +37,7 @@ public class Hello {
         // get the count of the records
         System.out.println("  -- Records returned: " + results.size() + " --");
         // print the results
-        for (Object result : results) {
-            if (result instanceof String) {
-                String result2 = (String) result;
-            }
+        for (Company result : results) {
             // System.out.printf("Class: %s%n", result.getClass().getName());
             System.out.printf(".toString(): %s%n", result.toString());
         }
