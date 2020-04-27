@@ -29,13 +29,13 @@ public class Main {
         stockRegion.clear();
         stockRegion.putAll(createStockData());
 
+        // Get QueryService from Cache.
+        QueryService queryService = cache.getQueryService();
+
         /*----------------------------/
          *  EXAMPLE QUERY            /
          *-------------------------*/
         // String exQueryString = "SELECT * FROM /stocks";
-        //
-        // // Get QueryService from Cache.
-        // QueryService queryService = cache.getQueryService();
         //
         // // Execute query
         // SelectResults<Stock> resultsEx =
