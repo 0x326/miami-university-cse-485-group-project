@@ -30,38 +30,85 @@ public class Hello {
         stockRegion.putAll(createStockData());
 
         /*----------------------------/
-         *  WRITE YOUR QUERY HERE:   /
+         *  EXAMPLE QUERY            /
          *-------------------------*/
         //String queryString = "SELECT c.name FROM /companies c where c.hqLocationState = 'NJ'";
-        String queryString1 = "SELECT * FROM /stocks";
-        String queryString2 = "SELECT s.name, s.\"date\" FROM /stocks s WHERE s.price > 1000";
+        String exQueryString = "SELECT * FROM /stocks";
 
         // Get QueryService from Cache.
         QueryService queryService = cache.getQueryService();
 
         // Execute query
-        SelectResults<Stock> results1 =
-            (SelectResults<Stock>) queryService.newQuery(queryString1).execute();
+        SelectResults<Stock> resultsEx =
+            (SelectResults<Stock>) queryService.newQuery(exQueryString).execute();
 
         // Print results
-        System.out.println("  -- Records returned: " + results1.size() + " --");
-        for (Stock result : results1) {
+        System.out.println("  -- Records returned: " + resultsEx.size() + " --");
+        for (Stock result : resultsEx) {
             // System.out.println(result.getPrice());
             // System.out.printf("Class: %s%n", result.getClass().getName());
             System.out.printf("Name %s at $%.2f (as of %s)%n",
-                result.getName(), result.getPrice(), result.getDate());
+                result.getName(), result.getPrice(), result.getLastUpdatedDate());
         }
+
+        /*----------------------------/
+         *  WRITE QUERY #1 HERE      /
+         *-------------------------*/
+        String queryString1 = "SELECT s.name, s.price FROM /stocks s WHERE s.price > 1000";
+        
+        // Execute query
+        SelectResults<Struct> results1 =
+            (SelectResults<Struct>) queryService.newQuery(queryString1).execute();
+
+        // Print results
+        System.out.println("  -- Records returned: " + results1.size() + " --");
+        for (Struct result : results1) {
+            // System.out.println(result.getPrice());
+            // System.out.printf("Class: %s%n", result.getClass().getName());
+            System.out.printf("%s at $%s%n", result.get("name"), result.get("price"));
+        }
+
+        /*----------------------------/
+         *  WRITE QUERY #2 HERE      /
+         *-------------------------*/
+        String queryString2 = "SELECT c.name, s.price FROM /stocks s, /companies c " +
+            "WHERE s.name = c.stockAbr";
 
         // Execute query
         SelectResults<Struct> results2 =
             (SelectResults<Struct>) queryService.newQuery(queryString2).execute();
 
         // Print results
-        System.out.println("  -- Records returned: " + results2.size() + " --");
+        System.out.println("\n\n  -- Records returned: " + results2.size() + " --");
         for (Struct result : results2) {
             // System.out.println(result.getPrice());
             // System.out.printf("Class: %s%n", result.getClass().getName());
-            System.out.printf("Name %s at %s%n", result.get("name"), result.get("date"));
+            System.out.printf("%s at $%s%n", result.get("name"), result.get("price"));
+        }
+
+        /*----------------------------/
+         *  WRITE QUERY #3 HERE      /
+         *-------------------------*/
+    //String queryString3 = "SELECT s.\"date\" FROM /stocks s WHERE s.\"date\" = TO_DATE('4/14', 'MM/dd')";
+        String queryString3 = "SELECT c.name, s.price FROM /stocks s, /companies c " +
+            "WHERE s.name = c.stockAbr";
+
+        // Execute query
+        SelectResults<Struct> results3 =
+            (SelectResults<Struct>) queryService.newQuery(queryString3).execute();
+
+        // Print results
+        System.out.println("\n\n  -- Records returned: " + results3.size() + " --");
+        for (Struct result : results3) {
+            for (String field : result.getStructType().getFieldNames()) {
+                System.out.println(field);
+            }
+            for (Object value : result.getFieldValues()) {
+                System.out.println(value);
+            }
+            // System.out.println(result.getPrice());
+            // System.out.printf("Class: %s%n", result.getClass().getName());
+            System.out.printf("%s at $%s%n", result.get("name"), result.get("roundPrice"));
         }
 
         cache.close();

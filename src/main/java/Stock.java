@@ -4,15 +4,15 @@ public class Stock implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String name;
-    private String date;
+    private String lastUpdatedDate;
     private double price;
 
     public Stock() {
         this("", "", 0);
     }
-    public Stock(String name, String date, double price) {
+    public Stock(String name, String lastUpdatedDate, double price) {
         this.name = name;
-        this.date = date;
+        this.lastUpdatedDate = lastUpdatedDate;
         this.price = price;
     }
 
@@ -23,11 +23,11 @@ public class Stock implements Serializable {
         this.name = name;
     }
 
-    public String getDate() {
-        return date;
+    public String getLastUpdatedDate() {
+        return lastUpdatedDate;
     }
-    public void setDate(String date) {
-        this.date = date;
+    public void setLastUpdatedDate(String lastUpdatedDate) {
+        this.lastUpdatedDate = lastUpdatedDate;
     }
 
     public double getPrice() {
@@ -38,6 +38,6 @@ public class Stock implements Serializable {
     }
 
     public String toString() {
-        return name + " on " + date + ": $" + price;
+        return name + " on " + lastUpdatedDate + ": $" + price;
     }
 }
