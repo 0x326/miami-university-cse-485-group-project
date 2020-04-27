@@ -9,7 +9,7 @@ import org.apache.geode.cache.query.Query;
 import org.apache.geode.cache.query.SelectResults;
 import org.apache.geode.cache.query.Struct;
 
-public class Hello {
+public class Main {
 
     public static void main(String[] args) throws Exception {
 
