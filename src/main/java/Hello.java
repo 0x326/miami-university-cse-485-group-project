@@ -90,8 +90,8 @@ public class Hello {
          *  WRITE QUERY #3 HERE      /
          *-------------------------*/
     //String queryString3 = "SELECT s.\"date\" FROM /stocks s WHERE s.\"date\" = TO_DATE('4/14', 'MM/dd')";
-        String queryString3 = "SELECT c.name, s.price FROM /stocks s, /companies c " +
-            "WHERE s.name = c.stockAbr";
+        String queryString3 = "SELECT s.name, AVG(s.price) AS avgPrice FROM /stocks s " +
+            "GROUP BY s.name";
 
         // Execute query
         SelectResults<Struct> results3 =
@@ -100,15 +100,7 @@ public class Hello {
         // Print results
         System.out.println("\n\n  -- Records returned: " + results3.size() + " --");
         for (Struct result : results3) {
-            for (String field : result.getStructType().getFieldNames()) {
-                System.out.println(field);
-            }
-            for (Object value : result.getFieldValues()) {
-                System.out.println(value);
-            }
-            // System.out.println(result.getPrice());
-            // System.out.printf("Class: %s%n", result.getClass().getName());
-            System.out.printf("%s at $%s%n", result.get("name"), result.get("roundPrice"));
+            System.out.printf("%s averaged at $%s%n", result.get("name"), result.get("avgPrice"));
         }
 
         cache.close();
