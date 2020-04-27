@@ -52,10 +52,30 @@ public class Hello {
 
     // get a map of company data
     public static Map<Integer, Company> createCompanyData() {
-        String[] names = ("Alphabet Inc.,Apple Inc.,Amazon.com Inc.,Facebook Inc.,Microsoft Corporation," +
-            "Johnson & Johnson").split(",");
-        String[] stockAbr = "GOOGL,AAPL,AMZN,FB,MSFT,JNJ".split(",");
-        String[] hqLocSt = "CA,CA,WA,CA,WA,NJ".split(",");
+        String[] names = {
+            "Alphabet Inc.",
+            "Apple Inc.",
+            "Amazon.com Inc.",
+            "Facebook Inc.",
+            "Microsoft Corporation",
+            "Johnson & Johnson"
+        };
+        String[] stockAbr = {
+            "GOOGL",
+            "AAPL",
+            "AMZN",
+            "FB",
+            "MSFT",
+            "JNJ"
+        };
+        String[] hqLocSt = {
+            "CA",
+            "CA",
+            "WA",
+            "CA",
+            "WA",
+            "NJ"
+        };
         Map<Integer, Company> companies = new HashMap<Integer, Company>();
         for (int i = 0; i < names.length; i++) {
             Company value = new Company(names[i],stockAbr[i],hqLocSt[i]);
