@@ -1,10 +1,13 @@
 import java.util.Map;
 import java.util.HashMap;
+import java.util.UUID;
+import java.sql.Date;
 import org.apache.geode.cache.Region;
 import org.apache.geode.cache.client.*;
 import org.apache.geode.cache.query.QueryService;
 import org.apache.geode.cache.query.Query;
 import org.apache.geode.cache.query.SelectResults;
+import org.apache.geode.cache.query.Struct;
 
 public class Hello {
 
