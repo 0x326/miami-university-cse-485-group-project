@@ -5,6 +5,8 @@
 To start:
 
 ```bash
+cd miami-university-cse-485-group-project/
+
 docker run -it --rm \
     -v "$(pwd):/pwd" \
     -p 10334:10334 \
