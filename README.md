@@ -13,4 +13,6 @@ docker run -it --rm \
     -p 1099:1099 \
     --hostname localhost \
     apachegeode/geode
+
+# Then, copy and past gfsh_init.sh into the GFSH prompt
 ```
