@@ -16,4 +16,3 @@ dependencies {
 }
 
 mainClassName = 'Main'
-buildDir = 'out/production'
