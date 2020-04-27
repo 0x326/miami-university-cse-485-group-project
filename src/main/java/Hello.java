@@ -98,5 +98,40 @@ public class Hello {
         return companies;
     }
 
-    // TODO (John): create a map returning method for populating the Stock region
+    // get a map of company data
+    public static Map<UUID, Stock> createStockData() {
+        String[] names = {
+            "GOOGL",
+            "AAPL",
+            "AMZN",
+            "FB",
+            "MSFT",
+            "JNJ"
+        };
+        String[] dates = {
+            "4/1",
+            "4/2",
+            "4/3",
+            "4/4",
+            "4/5",
+            "4/6",
+            "4/7",
+            "4/8",
+            "4/9",
+            "4/10",
+            "4/11",
+            "4/12",
+            "4/13",
+            "4/14"
+        };
+        Map<UUID, Stock> stocks = new HashMap<UUID, Stock>();
+        for (int i = 0; i < names.length; i++) {
+            for (int j = 0; j < dates.length; j++) {
+                double price = (((double)(j * 100 - (j * 7))) - ((double) i * -1 * i + 3));
+                Stock stock = new Stock(names[i], dates[j], price);
+                stocks.put(UUID.randomUUID(), stock);
+            }
+        }
+        return stocks;
+    }
 }
