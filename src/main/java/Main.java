@@ -60,7 +60,7 @@ public class Main {
             (SelectResults<Struct>) queryService.newQuery(queryString1).execute();
 
         // Print results
-        System.out.println("  -- Records returned: " + results1.size() + " --");
+        System.out.println("  -- Query 1: Records returned: " + results1.size() + " --");
         for (Struct result : results1) {
             System.out.printf("%s at $%s%n", result.get("name"), result.get("price"));
         }
@@ -77,7 +77,7 @@ public class Main {
             (SelectResults<Struct>) queryService.newQuery(queryString2).execute();
 
         // Print results
-        System.out.println("\n\n  -- Records returned: " + results2.size() + " --");
+        System.out.println("\n\n  -- Query 2: Records returned: " + results2.size() + " --");
         for (Struct result : results2) {
             System.out.printf("%s at $%s%n", result.get("name"), result.get("price"));
         }
@@ -94,7 +94,7 @@ public class Main {
             (SelectResults<Struct>) queryService.newQuery(queryString3).execute();
 
         // Print results
-        System.out.println("\n\n  -- Records returned: " + results3.size() + " --");
+        System.out.println("\n\n  -- Query 3: Records returned: " + results3.size() + " --");
         for (Struct result : results3) {
             System.out.printf("%s averaged at $%s%n", result.get("name"), result.get("avgPrice"));
         }
