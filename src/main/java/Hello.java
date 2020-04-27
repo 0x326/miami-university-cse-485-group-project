@@ -32,7 +32,6 @@ public class Hello {
         /*----------------------------/
          *  EXAMPLE QUERY            /
          *-------------------------*/
-        //String queryString = "SELECT c.name FROM /companies c where c.hqLocationState = 'NJ'";
         String exQueryString = "SELECT * FROM /stocks";
 
         // Get QueryService from Cache.
@@ -45,8 +44,6 @@ public class Hello {
         // Print results
         System.out.println("  -- Records returned: " + resultsEx.size() + " --");
         for (Stock result : resultsEx) {
-            // System.out.println(result.getPrice());
-            // System.out.printf("Class: %s%n", result.getClass().getName());
             System.out.printf("Name %s at $%.2f (as of %s)%n",
                 result.getName(), result.getPrice(), result.getLastUpdatedDate());
         }
@@ -63,8 +60,6 @@ public class Hello {
         // Print results
         System.out.println("  -- Records returned: " + results1.size() + " --");
         for (Struct result : results1) {
-            // System.out.println(result.getPrice());
-            // System.out.printf("Class: %s%n", result.getClass().getName());
             System.out.printf("%s at $%s%n", result.get("name"), result.get("price"));
         }
 
@@ -81,15 +76,12 @@ public class Hello {
         // Print results
         System.out.println("\n\n  -- Records returned: " + results2.size() + " --");
         for (Struct result : results2) {
-            // System.out.println(result.getPrice());
-            // System.out.printf("Class: %s%n", result.getClass().getName());
             System.out.printf("%s at $%s%n", result.get("name"), result.get("price"));
         }
 
         /*----------------------------/
          *  WRITE QUERY #3 HERE      /
          *-------------------------*/
-    //String queryString3 = "SELECT s.\"date\" FROM /stocks s WHERE s.\"date\" = TO_DATE('4/14', 'MM/dd')";
         String queryString3 = "SELECT s.name, AVG(s.price) AS avgPrice FROM /stocks s " +
             "GROUP BY s.name";
 
