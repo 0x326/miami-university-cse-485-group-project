@@ -32,21 +32,21 @@ public class Main {
         /*----------------------------/
          *  EXAMPLE QUERY            /
          *-------------------------*/
-        String exQueryString = "SELECT * FROM /stocks";
-
-        // Get QueryService from Cache.
-        QueryService queryService = cache.getQueryService();
-
-        // Execute query
-        SelectResults<Stock> resultsEx =
-            (SelectResults<Stock>) queryService.newQuery(exQueryString).execute();
-
-        // Print results
-        System.out.println("  -- Records returned: " + resultsEx.size() + " --");
-        for (Stock result : resultsEx) {
-            System.out.printf("Name %s at $%.2f (as of %s)%n",
-                result.getName(), result.getPrice(), result.getLastUpdatedDate());
-        }
+        // String exQueryString = "SELECT * FROM /stocks";
+        //
+        // // Get QueryService from Cache.
+        // QueryService queryService = cache.getQueryService();
+        //
+        // // Execute query
+        // SelectResults<Stock> resultsEx =
+        //     (SelectResults<Stock>) queryService.newQuery(exQueryString).execute();
+        //
+        // // Print results
+        // System.out.println("  -- Example: Records returned: " + resultsEx.size() + " --");
+        // for (Stock result : resultsEx) {
+        //     System.out.printf("Name %s at $%.2f (as of %s)%n",
+        //         result.getName(), result.getPrice(), result.getLastUpdatedDate());
+        // }
 
         /*----------------------------/
          *  WRITE QUERY #1 HERE      /
