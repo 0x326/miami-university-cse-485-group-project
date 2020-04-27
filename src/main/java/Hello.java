@@ -73,7 +73,7 @@ public class Hello {
         };
         Map<Integer, Company> companies = new HashMap<Integer, Company>();
         for (int i = 0; i < names.length; i++) {
-            Company value = new Company(names[i],stockAbr[i],hqLocSt[i]);
+            Company value = new Company(names[i], stockAbr[i], hqLocSt[i]);
             companies.put(i, value);
         }
         return companies;
