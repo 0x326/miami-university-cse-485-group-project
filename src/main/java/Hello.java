@@ -13,40 +13,59 @@ public class Hello {
         ClientCache cache = new ClientCacheFactory()
             .addPoolLocator("localhost", 10334)
             .create();
-        Region<Integer, Company> region = cache
-            .<Integer, Company>createClientRegionFactory(ClientRegionShortcut.PROXY)
+        Region<UUID, Company> companyRegion = cache
+            .<UUID, Company>createClientRegionFactory(ClientRegionShortcut.PROXY)
             .create("companies");
-        // TODO (John): create a region for Stock
+        Region<UUID, Stock> stockRegion = cache
+            .<UUID, Stock>createClientRegionFactory(ClientRegionShortcut.PROXY)
+            .create("stocks");
 
         // populate regions
-        Map<Integer, Company> companies = createCompanyData();
-        region.putAll(companies);
+        companyRegion.clear();
+        companyRegion.putAll(createCompanyData());
+        stockRegion.clear();
+        stockRegion.putAll(createStockData());
 
         /*----------------------------/
          *  WRITE YOUR QUERY HERE:   /
          *-------------------------*/
-        String queryString = "SELECT c.name FROM /companies c where c.hqLocationState = 'NJ'";
+        //String queryString = "SELECT c.name FROM /companies c where c.hqLocationState = 'NJ'";
+        String queryString1 = "SELECT * FROM /stocks";
+        String queryString2 = "SELECT s.name, s.\"date\" FROM /stocks s WHERE s.price > 1000";
 
         // Get QueryService from Cache.
         QueryService queryService = cache.getQueryService();
 
-        // Execute Query locally. Returns results set.
-        SelectResults<Company> results =
-            (SelectResults<Company>) queryService.newQuery(queryString).execute();
+        // Execute query
+        SelectResults<Stock> results1 =
+            (SelectResults<Stock>) queryService.newQuery(queryString1).execute();
 
-        // get the count of the records
-        System.out.println("  -- Records returned: " + results.size() + " --");
-        // print the results
-        for (Company result : results) {
+        // Print results
+        System.out.println("  -- Records returned: " + results1.size() + " --");
+        for (Stock result : results1) {
+            // System.out.println(result.getPrice());
             // System.out.printf("Class: %s%n", result.getClass().getName());
-            System.out.printf(".toString(): %s%n", result.toString());
+            System.out.printf("Name %s at $%.2f (as of %s)%n",
+                result.getName(), result.getPrice(), result.getDate());
+        }
+
+        // Execute query
+        SelectResults<Struct> results2 =
+            (SelectResults<Struct>) queryService.newQuery(queryString2).execute();
+
+        // Print results
+        System.out.println("  -- Records returned: " + results2.size() + " --");
+        for (Struct result : results2) {
+            // System.out.println(result.getPrice());
+            // System.out.printf("Class: %s%n", result.getClass().getName());
+            System.out.printf("Name %s at %s%n", result.get("name"), result.get("date"));
         }
 
         cache.close();
     }
 
     // get a map of company data
-    public static Map<Integer, Company> createCompanyData() {
+    public static Map<UUID, Company> createCompanyData() {
         String[] names = {
             "Alphabet Inc.",
             "Apple Inc.",
@@ -71,10 +90,10 @@ public class Hello {
             "WA",
             "NJ"
         };
-        Map<Integer, Company> companies = new HashMap<Integer, Company>();
+        Map<UUID, Company> companies = new HashMap<UUID, Company>();
         for (int i = 0; i < names.length; i++) {
             Company value = new Company(names[i], stockAbr[i], hqLocSt[i]);
-            companies.put(i, value);
+            companies.put(UUID.randomUUID(), value);
         }
         return companies;
     }
