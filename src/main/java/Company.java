@@ -23,10 +23,10 @@ public class Company implements Serializable {
         this.name = name;
     }
 
-    public String getHqLocation() {
+    public String getHqLocationState() {
         return hqLocationState;
     }
-    public void setHqLocation(String hqLocation) {
+    public void setHqLocationState(String hqLocation) {
         this.hqLocationState = hqLocation;
     }
 
