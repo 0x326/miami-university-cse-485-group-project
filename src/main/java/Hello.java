@@ -30,11 +30,9 @@ public class Hello {
         // Get QueryService from Cache.
         QueryService queryService = cache.getQueryService();
 
-        // Create the Query Object.
-        Query query = queryService.newQuery(queryString);
-
         // Execute Query locally. Returns results set.
-        SelectResults<Company> results = (SelectResults<Company>)query.execute();
+        SelectResults<Company> results =
+            (SelectResults<Company>) queryService.newQuery(queryString).execute();
 
         // get the count of the records
         System.out.println("  -- Records returned: " + results.size() + " --");
